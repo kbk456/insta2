@@ -6,7 +6,6 @@ function imgDelete(imageId){
                     return res.text();
                 }).then(function(res){
                     if(res === "ok"){
-                        alert()
                         location.reload();
                     }
 	    })
