@@ -6,9 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.insta.service.MyUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -52,6 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			@Override
 			public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 					Authentication authentication) throws IOException, ServletException {
+				String role = ((MyUserDetail) ((UsernamePasswordAuthenticationToken) authentication).getPrincipal()).getUser().getRole();
+				if(role.equals("ROLE_ADMIN")){
+					response.sendRedirect("/admin");
+					return;
+				}
 				response.sendRedirect("/");
 			}
 		});

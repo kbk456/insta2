@@ -11,7 +11,7 @@ spring:
       
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/insta?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/insta?serverTimezone=Asia/Seoul&useSSL=false&characterEncoding=UTF-8
     username: root
     password: 1234
     
@@ -44,7 +44,7 @@ spring:
       password: 1234   
 
 file:
-  path: C:/Project/instagram/src/main/resources/upload/
+  path: C:/insta2/src/main/resources/upload/
 
 
   
